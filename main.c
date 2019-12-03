@@ -20,8 +20,8 @@ void insert(node *root, int n) {
     current->next = new_node;
 }
 
-void show(doubly_linked_list *l) {
-    node *current = l->root;
+void show(node *l) {
+    node *current = l;
     int idx = 1;
     while (current != NULL) {
         printf("Doubly-Linked-List elements[%d] is %d \n", idx, current->val);
@@ -31,12 +31,10 @@ void show(doubly_linked_list *l) {
 }
 
 int main() {
-    doubly_linked_list l = {};
+    node *l = NULL;
 
-    insert(l.root, 3);
-    insert(l.root, 5);
-    insert(l.root, 7);
-    printf("----------------------------------------");
+    insert(l, 3);
+    printf("----------------------------------------\n");
 
-    show(&l);
+    show(l);
 }
