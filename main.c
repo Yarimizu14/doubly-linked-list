@@ -20,6 +20,16 @@ void insert(node **root, int n) {
     new_node->prev = current;
 }
 
+int size(node *root) {
+    int count = 1;
+    node *current = root;
+    while (current != NULL) {
+        current = current->next;
+        count++;
+    }
+    return count;
+}
+
 void show(node *l) {
     node *current = l;
     int idx = 1;
@@ -40,4 +50,6 @@ int main() {
     printf("----------------------------------------\n");
 
     show(l);
+    int s = size(l);
+    printf("size of l is %d", s);
 }
