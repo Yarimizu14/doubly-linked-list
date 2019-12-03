@@ -10,6 +10,7 @@ typedef struct node_ {
 } node;
 
 void insert(node **root, int n);
+void insert_after(node *target, int n);
 int size(node *root);
 node *get(node *root, int index);
 

@@ -20,6 +20,17 @@ void insert(node **root, int n) {
     new_node->prev = current;
 }
 
+void insert_after(node *target, int n) {
+    node *new_node = (struct node_ *)malloc(sizeof(struct node_));
+    *new_node = (node){n};
+
+    node *next = target->next;
+    target->next = new_node;
+
+    new_node->next = next;
+    new_node->prev = target;
+}
+
 int size(node *root) {
     int count = 1;
     node *current = root;
@@ -67,6 +78,10 @@ int main() {
     int s = size(l);
     printf("size of l is %d\n", s);
 
-    node *t = get(l, 3);
+    node *t = get(l, 1);
     printf("target node val is %d\n", t->val);
+
+    insert_after(t, 8);
+    printf("----------------------------------------\n");
+    show(l);
 }
