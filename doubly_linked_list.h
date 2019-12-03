@@ -9,7 +9,7 @@ typedef struct node_ {
     struct node_ *prev;
 } node;
 
-void insert(node *root, int n);
+void insert(node **root, int n);
 int size(node *root);
 
 #endif

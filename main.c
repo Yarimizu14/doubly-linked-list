@@ -3,22 +3,21 @@
 #include "doubly_linked_list.h"
 #include <assert.h>
 
-/*
- * This Does not work
- */
-void insert(node *root, int n) {
-    node *new_node = (struct node_ *)malloc(sizeof(struct node_));
-    *new_node = (node){n};
-    if (root == NULL) {
+void insert(node **root, int n) {
+    if (*root == NULL) {
         printf("root is NULL\n");
-        root = new_node;
+        *root = (struct node_ *)malloc(sizeof(struct node_));
+        **root = (node){n};
         return;
     }
-    node *current = root;
+    node *current = *root;
+    node *new_node = (struct node_ *)malloc(sizeof(struct node_));
+    *new_node = (node){n};
     while (current->next != NULL) {
         current = current->next;
     }
     current->next = new_node;
+    new_node->prev = current;
 }
 
 void show(node *l) {
@@ -34,7 +33,10 @@ void show(node *l) {
 int main() {
     node *l = NULL;
 
-    insert(l, 3);
+    insert(&l, 3);
+    insert(&l, 2);
+    insert(&l, 5);
+    insert(&l, 4);
     printf("----------------------------------------\n");
 
     show(l);
