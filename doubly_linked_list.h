@@ -11,5 +11,6 @@ typedef struct node_ {
 
 void insert(node **root, int n);
 int size(node *root);
+node *get(node *root, int index);
 
 #endif

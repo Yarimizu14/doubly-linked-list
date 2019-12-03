@@ -30,9 +30,23 @@ int size(node *root) {
     return count;
 }
 
+node *get(node *root, int index) {
+    assert(index >= 0);
+    int idx = 0;
+    node *current = root;
+    while (current != NULL) {
+        if (idx == index) {
+            return current;
+        }
+        current = current->next;
+        idx++;
+    }
+    return NULL;
+}
+
 void show(node *l) {
     node *current = l;
-    int idx = 1;
+    int idx = 0;
     while (current != NULL) {
         printf("Doubly-Linked-List elements[%d] is %d \n", idx, current->val);
         current = current->next;
@@ -51,5 +65,8 @@ int main() {
 
     show(l);
     int s = size(l);
-    printf("size of l is %d", s);
+    printf("size of l is %d\n", s);
+
+    node *t = get(l, 3);
+    printf("target node val is %d\n", t->val);
 }
