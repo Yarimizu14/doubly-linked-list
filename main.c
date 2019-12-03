@@ -8,6 +8,7 @@
  */
 void insert(node *root, int n) {
     node *new_node = (struct node_ *)malloc(sizeof(struct node_));
+    *new_node = (node){n};
     if (root == NULL) {
         printf("root is NULL\n");
         root = new_node;
